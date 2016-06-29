@@ -1,0 +1,42 @@
+{
+    "contacts": {
+        "1": {
+            "first_name": "Michael",
+            "last_name": "Jones",
+            "contacts": [
+                {
+                    "title": "work",
+                    "email": "michael.jones@domain.com"
+                },
+                {
+                    "title": "personal",
+                    "email": "michael.jones@domain.com",
+                    "phone": "012345 543321",
+                    "mobile": "07909 1232331",
+                    "skype": "michael.skypeaddress"
+                }
+            ]
+            
+        },
+        "2": {
+            "first_name": "Jack",
+            "last_name": "Youvis",
+            "contacts": [
+                {
+                    "title": "work",
+                    "email": "jack.youvis@domain.com",
+                    "phone": "+44 (0)20 123 2321"
+                }
+            ]
+        }
+    },
+    "labels": {
+        "first_name": "First name",
+        "last_name": "Last name",
+        "title": "Title",
+        "email": "Email",
+        "phone": "Phone",
+        "mobile": "Mobile",
+        "skype": "Skype Username"
+    }
+}

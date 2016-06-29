@@ -1,0 +1,19 @@
+{
+    "name": "maltronic/php-pimple-contacts-example",
+    "description": "Use the Pimple dependency injection container to quickly add DI and IoC extendability to a simple PHP contacts application",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "1.0.*",
+        "pimple/pimple": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {"app\\": "lib/"}
+    },
+    "authors": [
+        {
+            "name": "Malcolm Davis",
+            "email": "maltronic.email@gmail.com"
+        }
+    ]
+}
+
