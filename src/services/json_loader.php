@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace pContactsExample\services;
 
 use Monolog\Logger;
 use Pimple\Container;

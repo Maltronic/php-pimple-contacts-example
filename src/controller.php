@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace pContactsExample;
 
 use Pimple\Container;
 
@@ -27,7 +27,7 @@ class controller
     {
         $view_data = array(
             'contacts' => $this->data->contacts,
-            'labels' => $this->data->labels
+            'labels' => $this->labels
         );
         $this->show('view_all', $view_data);
     }
@@ -37,7 +37,7 @@ class controller
         $view_data = array(
             'id' => $id,
             'person' => $this->data->contacts->$id,
-            'labels' => $this->data->labels
+            'labels' => $this->labels
         );
         $this->show('view_contact', $view_data);
     }
@@ -57,13 +57,13 @@ class controller
             }
             $this->data->contacts->$id = $contact;
             $this->container['data_loader']->save($this->url, $this->data);
-            header("Location: /public/index.php?page=view&id=$id");
+            header("Location: /index.php?page=view&id=$id");
             die();
         }
         $view_data = array(
             'id' => $id,
             'person' => $this->data->contacts->$id,
-            'labels' => $this->data->labels
+            'labels' => $this->labels
         );
         $this->show('update_contact', $view_data);
     }
@@ -72,11 +72,11 @@ class controller
     {
         if (!isset($this->data->contacts->$id)) {
             header("HTTP/1.0 404 Not Found");
-            die();
+            die('404 Not Found');
         }
         unset($this->data->contacts->$id);
         $this->container['data_loader']->save($this->url, $this->data);
-        header("Location: /public/index.php");
+        header("Location: /index.php");
         die();
     }
 
@@ -84,11 +84,11 @@ class controller
     {
         if (empty($newData['name'] || empty($newData['value']))) {
             header("HTTP/1.0 400 Bad data");
-            die();
+            die('400 Bad Data');
         }
-        $this->data->labels->$newData['name'] = $newData['value'];
+        $this->labels->$newData['name'] = $newData['value'];
         $this->container['data_loader']->save($this->url, $this->data);
-        header("Location: /public/index.php");
+        header("Location: /index.php");
         die();
     }
 
