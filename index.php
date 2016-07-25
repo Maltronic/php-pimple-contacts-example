@@ -27,9 +27,9 @@ $container['view_helpers'] = function (Container $c) {
 
 ?>
     <h1>Contacts Address Book</h1>
-    <br />
+    <br/>
     <h2>List of Contacts</h2>
-    <br />
+    <br/>
 <?php
 if (empty($_GET['page'])) {
     $_GET['page'] = 'view_all';
@@ -44,6 +44,7 @@ switch ($_GET['page']) {
             $container['contact_controller']->view_contact_action($_GET['id']);
         } else {
             header("HTTP/1.0 400 No Contact ID");
+            die('400 No Contact ID');
         }
         break;
 
@@ -52,6 +53,7 @@ switch ($_GET['page']) {
             $container['contact_controller']->update_contact_action($_GET['id'], (!empty($_POST) ? $_POST : null));
         } else {
             header("HTTP/1.0 400 No Contact ID");
+            die('400 No Contact ID');
         }
         break;
 
@@ -60,16 +62,19 @@ switch ($_GET['page']) {
             $container['contact_controller']->delete_contact_action($_GET['id']);
         } else {
             header("HTTP/1.0 400 No Contact ID");
+            die('400 No Contact ID');
         }
         break;
 
     case 'label':
         if (empty($_POST)) {
             header("HTTP/1.0 400 No Contact ID");
+            die('400 No Contact ID');
         }
         $container['contact_controller']->set_label_action($_POST);
         break;
 
     default:
         header("HTTP/1.0 404 Not Found");
+        die('404 Not Found');
 }
