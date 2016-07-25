@@ -13,19 +13,18 @@ $container['logger'] = function ($c) {
     return new Logger('main');
 };
 $container['data_loader'] = function ($c) {
-    return new app\json_loader($c, $c['logger']);
+    return new \pContactsExample\services\json_loader($c, $c['logger']);
 };
 $container['contact_controller'] = function (Container $c) {
-    return new app\controller($c);
+    return new \pContactsExample\controller($c);
 };
 $container['contact_view'] = function (Container $c) {
-    return new app\view($c);
+    return new \pContactsExample\view($c);
 };
 $container['view_helpers'] = function (Container $c) {
-    return new app\view_helpers($c);
+    return new \pContactsExample\services\view_helpers($c);
 };
 
-// Contacts Address Book
 ?>
     <h1>Contacts Address Book</h1>
     <br />
