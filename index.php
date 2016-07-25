@@ -1,28 +1,28 @@
 <?php
 
-require_once "../vendor/autoload.php";
+require_once "vendor/autoload.php";
 
 use Pimple\Container;
 use Monolog\Logger;
 
 $container = new Container();
 
-$container['data_file_address'] = "../data/contacts.json";
+$container['data_file_address'] = "data/contacts.json";
 
 $container['logger'] = function ($c) {
     return new Logger('main');
 };
 $container['data_loader'] = function ($c) {
-    return new \pContactsExample\services\json_loader($c, $c['logger']);
+    return new pContactsExample\services\json_loader($c, $c['logger']);
 };
 $container['contact_controller'] = function (Container $c) {
-    return new \pContactsExample\controller($c);
+    return new pContactsExample\controller($c);
 };
 $container['contact_view'] = function (Container $c) {
-    return new \pContactsExample\view($c);
+    return new pContactsExample\view($c);
 };
 $container['view_helpers'] = function (Container $c) {
-    return new \pContactsExample\services\view_helpers($c);
+    return new pContactsExample\services\view_helpers($c);
 };
 
 ?>
@@ -68,6 +68,7 @@ switch ($_GET['page']) {
             header("HTTP/1.0 400 No Contact ID");
         }
         $container['contact_controller']->set_label_action($_POST);
+        break;
 
     default:
         header("HTTP/1.0 404 Not Found");
