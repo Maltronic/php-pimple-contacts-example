@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace pContactsExample\services;
 
 class view_helpers
 {

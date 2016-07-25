@@ -1,7 +1,7 @@
 <?php
-namespace app;
 
-use app\view_helpers;
+namespace pContactsExample;
+
 use Pimple\Container;
 
 class view
@@ -58,7 +58,7 @@ class view
                     $outp .= "<li>" . $this->labeller($title, $data['labels']) . ": $val</li>";
                 }
             }
-            $outp .= "</ul><a href='/public/index.php?page=update&id={$data['id']}'>update</a> <a href='/public/index.php?page=delete&id={$data['id']}'>delete</a> <a href='/public/index.php'>back</a>";
+            $outp .= "</ul><a href='index.php?page=update&id={$data['id']}'>update</a> <a href='index.php?page=delete&id={$data['id']}'>delete</a> <a href='/index.php'>back</a>";
         }
         return $outp;
     }
@@ -66,7 +66,7 @@ class view
     public function update_contact($data)
     {
         $person = $data['person'];
-        $outp = "<form action='/public/index.php?page=update&id={$data['id']}' method='POST'>";
+        $outp = "<form action='index.php?page=update&id={$data['id']}' method='POST'>";
         foreach ($person as $field => $value) {
             if (!is_object($value) && !is_array($value)) {
                 $outp .= "{$this->labeller($field, $data['labels'])}: <input type='text' name='$field' value='$value'><br />";
@@ -81,14 +81,14 @@ class view
                     $outp .= "<li>" . $this->labeller($title, $data['labels']) . ": $val</li>";
                 }
             }
-            $outp .= "</ul><a href='/public/index.php?page=view&id={$data['id']}'>view</a> <a href='/public/index.php'>back</a>";
+            $outp .= "</ul><a href='index.php?page=view&id={$data['id']}'>view</a> <a href='index.php'>back</a>";
         }
         return $outp;
     }
 
-    public function label_set($data)
+    public function label_set()
     {
-        $outp = "<br /><br /><form action='/public/index.php?page=label' method='POST'>Set a label: name: <input type='text' name='name' value=''> value: <input type='text' name='value' value=''> <input type=\"submit\" value=\"save\"></form>";
+        $outp = "<br /><br /><form action='index.php?page=label' method='POST'>Set a label: name: <input type='text' name='name' value=''> value: <input type='text' name='value' value=''> <input type=\"submit\" value=\"save\"></form>";
         return $outp;
     }
 
